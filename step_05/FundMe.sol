@@ -9,7 +9,10 @@ contract FundMe {
     mapping(address => uint256)  addressToAmountFunded;
 
     // fund function to submit amount to address
-    function fund() public payable {    
+    function fund() public payable {
+        // 18 digit number to be compared with donated amount
+        uint256 minimumUSD  = 50 * 10 ** 18;
+        require(getConversionRates(msg.value) >= minimumUSD, "You need more ETH!");
         addressToAmountFunded[msg.sender] += msg.value;
     }
 
@@ -32,5 +35,5 @@ contract FundMe {
         uint256 ethInUsd = (ethPrice * ethAmount) / 1000000000000000000;
         return ethInUsd;
     }
- 
+
 }
