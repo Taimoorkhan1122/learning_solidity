@@ -6,8 +6,8 @@ import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 contract FundMe {
     // mapping sender address to amount funded
-    mapping(address => uint256)  addressToAmountFunded;
-
+    mapping(address => uint256)  public addressToAmountFunded;
+    address[] public funders;
     address private owner;
 
     constructor() {
@@ -24,6 +24,7 @@ contract FundMe {
         uint256 minimumUSD  = 50 * 10 ** 18;
         require(getConversionRates(msg.value) >= minimumUSD, "You need more ETH!");
         addressToAmountFunded[msg.sender] += msg.value;
+        funders.push(msg.sender);
     }
 
     function getVersion() public view returns(uint256){
@@ -46,7 +47,20 @@ contract FundMe {
         return ethInUsd;
     }
 
-    function withdraw() public payable {
+    // modifiers, theses are similar to decorators in OOP. 
+    // Use this when you want to do some testing befor executing the funtion.
+    modifier adminOnly {
+        require(msg.sender == owner, "Only owner of the contract can withdraw");
+        _;
+    }
+
+    function withdraw() public adminOnly payable  {
         payable(msg.sender).transfer(address(this).balance);
+
+        for(uint256 senderIndex=0; senderIndex < funders.length; senderIndex++){
+            address funder = funders[senderIndex];
+            addressToAmountFunded[funder] = 0;
+        }
+        funders = new address[](0);
     }
 }
