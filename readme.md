@@ -56,3 +56,8 @@ def deploy_contract():
 ```
 This import your own account
 
+### Access contract in Brownie
+
+We can directly access our Contract inside our deploy.py script file. Brownie will take care of reading and compiling the contract.
+
+using `.deploy({"from": <sender account>)` will create a trasaction from provided account and deploy it to ganache local chain
