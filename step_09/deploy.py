@@ -47,10 +47,13 @@ abi = json.loads(
 )["output"]["abi"]
 
 # connection to Ganache RPC server
-w3 = Web3(Web3.HTTPProvider("HTTP://127.0.0.1:8545"))
+# w3 = Web3(Web3.HTTPProvider("HTTP://127.0.0.1:8545"))
+# deploying to rinkeby 
+w3 = Web3(Web3.HTTPProvider("https://rinkeby.infura.io/v3/deac76edcfed40529abaf0a9066f2d13"))
 
-chian_id = 1337
-my_address = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1"
+
+chian_id = 4
+my_address = "0xf72A3765dB24094da92a9D6ee5a7FD614a3ac198"
 private_key = os.getenv("PRIVATE_KEY")
 # create contract in python: this will create an instance of Contract object in python
 # Build the contract & deploy Transaction
