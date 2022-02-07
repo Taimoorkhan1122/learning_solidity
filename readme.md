@@ -61,3 +61,12 @@ This import your own account
 We can directly access our Contract inside our deploy.py script file. Brownie will take care of reading and compiling the contract.
 
 using `.deploy({"from": <sender account>)` will create a trasaction from provided account and deploy it to ganache local chain
+
+
+### Writing test for Contracts
+Writing test is crutial for developing smart contracts, it saves lots of efforts to debug if the contracts are working as expected or not. We are using pytest for testing our smart contracts. Brownie provides same utilities as pytest using it under the hood.
+
+We follow these steps when writing a test
+- Arrange: arrange all pieces of test
+- Act: create contract calls or other runtime work
+- Assert: assert the result of actions to the expected output
