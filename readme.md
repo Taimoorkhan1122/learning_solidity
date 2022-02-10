@@ -70,3 +70,7 @@ We follow these steps when writing a test
 - Arrange: arrange all pieces of test
 - Act: create contract calls or other runtime work
 - Assert: assert the result of actions to the expected output
+
+### Brownie Console
+
+For testing our contracts, we can use Brownie shell to access our contract without manually deploying it
