@@ -1,0 +1,10 @@
+dotenv: .env
+dependencies:
+  # -<organization/repo/chainlink-brownie-contract@1.1.1>
+  - "smartcontractkit/chainlink-brownie-contracts@0.4.0"
+compiler:
+  solc:
+    remappings:
+      - "@chainlink=smartcontractkit/chainlink-brownie-contracts@0.4.0"
+wallets:
+  from_key: ${PRIVATE_KEY}

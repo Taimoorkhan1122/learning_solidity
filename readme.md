@@ -74,3 +74,9 @@ We follow these steps when writing a test
 ### Brownie Console
 
 For testing our contracts, we can use Brownie shell to access our contract without manually deploying it
+
+
+### Verify deployed Contracts
+To verify deployed contracts progammatically you need to get access to api key from etherscan. Create an account and add you project to get one.
+
+Add the api key to .env as `ETHERSCAN_TOKEN`Then inside `deploy()` function add `publish_source=TRUE`
