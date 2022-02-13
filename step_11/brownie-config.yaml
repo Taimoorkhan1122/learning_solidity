@@ -8,3 +8,6 @@ compiler:
       - "@chainlink=smartcontractkit/chainlink-brownie-contracts@0.4.0"
 wallets:
   from_key: ${PRIVATE_KEY}
+networks:
+  rinkeby:
+    eth_price_feed: "0x8A753747A1Fa494EC906cE90E9f37563A8AF630e"

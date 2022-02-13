@@ -5,6 +5,16 @@ pragma solidity ^0.8.0;
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 contract FundMe {
+    address public owner;
+    AggregatorV3Interface public priceFeed;
+    constructor(address _priceFeed){
+        owner = msg.sender;
+        // providing the address of ETH to USD contract
+        // the contract has implemented AggregatorV3Interface methods 
+        priceFeed = AggregatorV3Interface(_priceFeed);
+
+    }
+
     // mapping sender address to the amount funded
     mapping(address => uint256)  addressToAmountFunded;
 
@@ -17,14 +27,10 @@ contract FundMe {
     }
 
     function getVersion() public view returns(uint256){
-        // providing the address of ETH to USD contract
-        // the contract has implemented AggregatorV3Interface methods 
-        AggregatorV3Interface priceFeed = AggregatorV3Interface(0x8A753747A1Fa494EC906cE90E9f37563A8AF630e);
         return priceFeed.version();
     }
 
     function getPrice() public view returns(uint256){
-        AggregatorV3Interface priceFeed =  AggregatorV3Interface(0x8A753747A1Fa494EC906cE90E9f37563A8AF630e);
         (,int256 answer,,,) = priceFeed.latestRoundData();
         // ETH/USD rate in 18 digit 
         return uint256(answer * 10000000000);
