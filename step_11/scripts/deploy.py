@@ -16,7 +16,6 @@ def deploy():
         publish_source=config["networks"][network.show_active()]["verify"],
     )
     print(fund_me)
-    pass
 
 
 def main():

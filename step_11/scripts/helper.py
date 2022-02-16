@@ -3,7 +3,7 @@ from web3 import Web3
 
 DECIMALS = 8
 # This is 2,000
-INITIAL_VALUE = 20000
+INITIAL_VALUE = 2000000000000
 LOCAL_DEVELOPMENT_ENVIRONMENTS = ["development", "ganache-local-chain"]
 
 def get_accounts():
@@ -18,6 +18,6 @@ def deploy_mock():
     if len(MockV3Aggregator) <= 0:
         print("Deploying Mocks...")
         MockV3Aggregator.deploy(
-            DECIMALS, Web3.toWei(INITIAL_VALUE, "ether"), {"from": account}
+            DECIMALS, INITIAL_VALUE, {"from": account}
         )
         print("Mocks Deployed!")
