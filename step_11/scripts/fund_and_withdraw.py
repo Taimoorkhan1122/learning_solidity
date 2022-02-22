@@ -7,6 +7,7 @@ def fund():
     enterance_fee = fund_me.getEntranceFee()
     print(f"Entrance fee is {enterance_fee}")
     print("Funding")
+    print(fund_me.getPrice())
     fund_me.fund({"from": account, "value": enterance_fee})
 
 def withdraw():
@@ -17,4 +18,4 @@ def withdraw():
 
 def main():
     fund()
-    withdraw()
+    # withdraw()
